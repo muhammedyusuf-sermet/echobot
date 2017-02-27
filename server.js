@@ -12,11 +12,14 @@ var connector = new builder.ChatConnector(botConnectorOptions);
 var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', function (session) {
-    var phpScriptPath = "s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php";
+    var phpScriptPath = "http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php";
     //respond with user's message
     session.send("Did you said " + session.message.text);
-	runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
-	     if(err) {session.send(err); /* log error */}
+    var exec = require("child_process").exec;
+    app.get('/', function(req, res){exec("php "+phpScriptPath, function (error, stdout, stderr) {res.send(stdout);});});
+	
+	/*runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
+	     if(err) {session.send(err);}
 	     else{
 		 var phpResponseJSON = JSON.parse(phpResponse)
 		 session.send(phpResponseJSON['resultText']);
@@ -33,8 +36,8 @@ bot.dialog('/', function (session) {
 		    }
 		});*/
 
-	     }
-	    });
+	  /*   }
+	    });*/
 });
 
 // Setup Restify Server
