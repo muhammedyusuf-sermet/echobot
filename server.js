@@ -16,7 +16,7 @@ bot.dialog('/', function (session) {
     //respond with user's message
     session.send("Did you said " + session.message.text);
 	runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
-	     if(err) {bot.reply(err, true); /* log error */}
+	     if(err) {session.send(err); /* log error */}
 	     else{
 		 var phpResponseJSON = JSON.parse(phpResponse)
 		 session.send(phpResponseJSON['resultText']);
