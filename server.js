@@ -12,9 +12,29 @@ var connector = new builder.ChatConnector(botConnectorOptions);
 var bot = new builder.UniversalBot(connector);
 
 bot.dialog('/', function (session) {
-    
+    var phpScriptPath = "s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php";
     //respond with user's message
     session.send("Did you said " + session.message.text);
+	runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
+	     if(err) {bot.reply(err, true); /* log error */}
+	     else{
+		 var phpResponseJSON = JSON.parse(phpResponse)
+		 session.send(phpResponseJSON['resultText']);
+
+		/* var options = {string: true};
+
+		base64.base64encoder(phpResponseJSON['imageLink'], options, function (err, image) {
+		    if (err) {
+			console.log(err);
+		    }
+		    {
+		      var originaldata = new Buffer(image, 'base64');
+		      bot.replyWithAttachment("Result" , "Image" , originaldata);
+		    }
+		});*/
+
+	     }
+	    });
 });
 
 // Setup Restify Server
