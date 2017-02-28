@@ -16,7 +16,7 @@ bot.dialog('/', function (session) {
     //respond with user's message
     session.send("Did you said " + session.message.text);
     var exec = require("child_process").exec;
-    server.get('/', function(req, res){exec("wget -q -O - "+phpScriptPath, function (error, stdout, stderr) {res.send(stdout);});});
+    server.get('/', function(req, res){exec("wget -q -O - "+phpScriptPath, function (error, stdout, stderr) {session.send(stdout);});});
     //app.get('/', function(req, res){exec("php "+phpScriptPath, function (error, stdout, stderr) {res.send(stdout);});});
 	
 	/*runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
