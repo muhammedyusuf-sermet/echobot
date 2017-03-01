@@ -42,7 +42,7 @@ bot.dialog('/', function (session) {
             session.send(body);
             //session.send(resultJSON['resultText']);
         }
-    })
+    });
 });
 
 // Setup Restify Server
