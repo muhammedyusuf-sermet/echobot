@@ -39,7 +39,7 @@ bot.dialog('/', function (session) {
         if (!error && response.statusCode == 200) {
             // Print out the response body
             //var resultJSON = JSON.parse(body);
-            session.send(response);
+            session.send(body);
             //session.send(resultJSON['resultText']);
         }
     })
