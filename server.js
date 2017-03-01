@@ -15,7 +15,7 @@ var options = {
     url: 'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php',
     method: 'POST',
     headers: headers,
-    form: {'searchTerm': 'definition'}
+    form: {'searchValue': 'definition'}
 }
 
 
