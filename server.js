@@ -18,8 +18,6 @@ var options = {
     form: {'searchValue': 'definition of hydrograph', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}
 }
 
-
-
 // Get secrets from server environment
 var botConnectorOptions = { 
     appId: process.env.BOTFRAMEWORK_APPID, 
@@ -34,18 +32,25 @@ bot.dialog('/', function (session) {
     
     //respond with user's message
     //session.send("I know you said; " + session.message.text);
-    options['form']['searchValue'] = session.message.text;
     
-    request(options, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            // Print out the response body
-            var resultJSON = JSON.parse(body);
-            //session.send(body);
-            session.send(resultJSON['resultText']);
-            
-            session.send();
-        }
-    });
+    
+    if(session.message.text.toUpperCase() == 'help'.toUpperCase())
+    {
+        session.send(`[Flood AI Alpha]\nHELP\nYou can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does catchment area mean?\n - How many stream sensors are there in Iowa City watershed?`, true);
+    }
+    else{
+        options['form']['searchValue'] = session.message.text;
+        
+        request(options, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // Print out the response body
+                var resultJSON = JSON.parse(body);
+                //session.send(body);
+                session.send(resultJSON['resultText']);
+                //session.send();
+            }
+        });
+    }
     
    // request.post({url:'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php', form: {'searchValue': 'definition', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}}, function(err,httpResponse,body){ session.send(err); session.send(body); });
 });
