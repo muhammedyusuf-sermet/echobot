@@ -1,6 +1,25 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 
+
+var request = require('request');
+
+// Set the headers
+var headers = {
+    'User-Agent':       'Super Agent/0.0.1',
+    'Content-Type':     'application/x-www-form-urlencoded'
+}
+
+// Configure the request
+var options = {
+    url: 'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php',
+    method: 'POST',
+    headers: headers,
+    form: {'searchTerm': 'definition'}
+}
+
+
+
 // Get secrets from server environment
 var botConnectorOptions = { 
     appId: process.env.BOTFRAMEWORK_APPID, 
@@ -15,6 +34,13 @@ bot.dialog('/', function (session) {
     
     //respond with user's message
     session.send("I know you said; " + session.message.text);
+    
+    request(options, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            // Print out the response body
+            session.send(body);
+        }
+    })
 });
 
 // Setup Restify Server
