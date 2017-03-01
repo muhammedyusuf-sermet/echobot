@@ -36,7 +36,7 @@ bot.dialog('/', function (session) {
     
     if(session.message.text.toUpperCase() == 'help'.toUpperCase())
     {
-        session.send(`[Flood AI Alpha]\nHELP\nYou can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does catchment area mean?\n - How many stream sensors are there in Iowa City watershed?`, true);
+        session.send(`[Flood AI Alpha] \n HELP \n You can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does catchment area mean?\n - How many stream sensors are there in Iowa City watershed?`, true);
     }
     else{
         options['form']['searchValue'] = session.message.text;
