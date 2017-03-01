@@ -22,7 +22,7 @@ bot.dialog('/', function (session) {
     });});
 	
 	runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
-	     if(err) {session.send(err);}
+	     if(err) {session.send(err+"here");}
 	     else{
 		 var phpResponseJSON = JSON.parse(phpResponse)
 		 session.send(phpResponseJSON['resultText']);
