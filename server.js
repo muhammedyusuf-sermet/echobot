@@ -35,14 +35,16 @@ bot.dialog('/', function (session) {
     //respond with user's message
     session.send("I know you said; " + session.message.text);
     
-    request(options, function (error, response, body) {
+    /*request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             // Print out the response body
             //var resultJSON = JSON.parse(body);
             session.send(body);
             //session.send(resultJSON['resultText']);
         }
-    });
+    });*/
+    
+    request.post({url:'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php', form: {'searchValue': 'definition', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}}, function(err,httpResponse,body){ session.send(err); session.send(body); });
 });
 
 // Setup Restify Server
