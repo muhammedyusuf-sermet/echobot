@@ -16,10 +16,12 @@ bot.dialog('/', function (session) {
     //respond with user's message
     session.send("Did you said " + session.message.text);
     var exec = require("child_process").exec;
-    server.get('/', function(req, res){exec("wget -q -O - "+phpScriptPath, function (error, stdout, stderr) {session.send(stdout); session.send(stderr);session.send("||"+error);});});
-    //app.get('/', function(req, res){exec("php "+phpScriptPath, function (error, stdout, stderr) {res.send(stdout);});});
+    //server.get('/', function(req, res){exec("wget -q -O - "+phpScriptPath, function (error, stdout, stderr) {session.send(stdout); session.send(stderr);session.send("||"+error);});});
+    server.get('/', function(req, res){exec("php "+phpScriptPath, function (error, stdout, stderr) {
+	    session.send(stdout+stderr+error);
+    });});
 	
-	/*runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
+	runner.exec("php " + phpScriptPath + " " +"definition", function(err, phpResponse, stderr) {
 	     if(err) {session.send(err);}
 	     else{
 		 var phpResponseJSON = JSON.parse(phpResponse)
@@ -37,8 +39,8 @@ bot.dialog('/', function (session) {
 		    }
 		});*/
 
-	  /*   }
-	    });*/
+	     }
+	    });
 });
 
 // Setup Restify Server
