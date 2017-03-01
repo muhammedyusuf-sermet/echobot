@@ -33,14 +33,16 @@ var bot = new builder.UniversalBot(connector);
 bot.dialog('/', function (session) {
     
     //respond with user's message
-    session.send("I know you said; " + session.message.text);
+    //session.send("I know you said; " + session.message.text);
     
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             // Print out the response body
-            //var resultJSON = JSON.parse(body);
-            session.send(body);
-            //session.send(resultJSON['resultText']);
+            var resultJSON = JSON.parse(body);
+            //session.send(body);
+            session.send(resultJSON['resultText']);
+            
+            session.send(options['form']['searchValue']);
         }
     });
     
