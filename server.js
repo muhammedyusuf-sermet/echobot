@@ -34,6 +34,7 @@ bot.dialog('/', function (session) {
     
     //respond with user's message
     //session.send("I know you said; " + session.message.text);
+    options['form']['searchValue'] = session.message.text;
     
     request(options, function (error, response, body) {
         if (!error && response.statusCode == 200) {
@@ -42,7 +43,7 @@ bot.dialog('/', function (session) {
             //session.send(body);
             session.send(resultJSON['resultText']);
             
-            session.send(options['form']['searchValue']);
+            session.send();
         }
     });
     
