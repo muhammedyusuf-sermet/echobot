@@ -96,7 +96,8 @@ botCall.dialog('/', [
         if (results.response) {
             switch (results.response.entity) {
                 case 'help':
-                    session.replaceDialog('/help', { full: true });
+                    session.replaceDialog('/', { full: false });
+                    //session.replaceDialog('/help', { full: true });
                     break;
                 case 'quit':
                     session.endDialog();
