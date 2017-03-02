@@ -151,7 +151,7 @@ botCall.dialog('/record', [
     function (session, results) {
         if (results.response) {
             //session.endDialog(prompts.record.result, results.response.lengthOfRecordingInSecs);
-            session.send("%s", results.response.textContent);
+            session.send("%s", results.response);
         } else {
             session.endDialog("You canceled");
         }
