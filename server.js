@@ -38,7 +38,7 @@ var bot = new builder.UniversalBot(connector/*, [
     }
 ]*/);
 
-
+/*
 // Create calling bot
 var connectorCall = new calling.CallConnector({
     callbackUrl: process.env.CALLBACK_URL,
@@ -46,7 +46,7 @@ var connectorCall = new calling.CallConnector({
     appPassword: process.env.BOTFRAMEWORK_APPSECRET
 });
 var botCall = new calling.UniversalCallBot(connectorCall);
-server.post('/api/calls', connectorCall.listen());
+server.post('/api/calls', connectorCall.listen());*/
 
 
 bot.dialog('/', function (session) {
