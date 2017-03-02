@@ -1,6 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
-var calling = require('../../calling/');
+var calling = require('botbuilder-calling');
 
 
 var request = require('request');
@@ -42,8 +42,8 @@ var bot = new builder.UniversalBot(connector/*, [
 // Create calling bot
 var connectorCall = new calling.CallConnector({
     callbackUrl: process.env.CALLBACK_URL,
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
+    appId: process.env.BOTFRAMEWORK_APPID,
+    appPassword: process.env.BOTFRAMEWORK_APPSECRET
 });
 var botCall = new calling.UniversalCallBot(connectorCall);
 server.post('/api/calls', connectorCall.listen());
