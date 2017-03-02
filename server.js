@@ -30,7 +30,7 @@ var bot = new builder.UniversalBot(connector, [
     function (session) {
        // session.send("Hello... I'm a decision bot.");
         session.send(`Hello %s!, welcome to Flood AI Alpha, IFIS! You can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does catchment area mean?\n - How many stream sensors are there in Iowa City watershed?`,session.userData.name);
-        session.beginDialog('rootMenu');
+        //session.beginDialog('rootMenu');
     },
     function (session, results) {
         session.endConversation("Goodbye until next time...");
