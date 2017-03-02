@@ -106,7 +106,7 @@ botCall.dialog('/', [
         list.push(calling.Prompt.text(session, 'Welcome to Iowa Flood Information System'));
         //session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
         calling.Prompts.choice(session, new calling.PlayPromptAction(session).prompts(list), [
-                { name: 'ask', speechVariation: ['ask','record', 'recordings'] },
+                { name: 'record', speechVariation: ['ask','record', 'recordings'] },
                 { name: 'help', speechVariation: ['help', 'repeat'] },
                 { name: 'quit', speechVariation: ['quit', 'end call', 'hangup', 'goodbye'] }
             ]);
