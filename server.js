@@ -80,10 +80,12 @@ bot.dialog('/', function (session) {
 
 // Calling bot Root
 botCall.dialog('/', function (session) {
-    var list = [];
+    session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+    
+   /* var list = [];
     list.push(calling.Prompt.text(session,'Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.'));
 
-    calling.PlayPromptAction(session).prompts(list);
+    calling.PlayPromptAction(session).prompts(list);*/
     
 });
 
