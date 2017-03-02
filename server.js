@@ -44,9 +44,9 @@ var connectorCall = new calling.CallConnector({
     callbackUrl: 'https://floodai.azurewebsites.net/api/calls',
     appId: process.env.BOTFRAMEWORK_APPID,
     appPassword: process.env.BOTFRAMEWORK_APPSECRET
-});/*
+});
 var botCall = new calling.UniversalCallBot(connectorCall);
-server.post('/api/calls', connectorCall.listen());*/
+
 
 
 bot.dialog('/', function (session) {
@@ -84,6 +84,7 @@ var server = restify.createServer();
 
 // Handle Bot Framework messages
 server.post('/api/messages', connector.listen());
+server.post('/api/calls', connectorCall.listen());
 
 // Serve a static web page
 server.get(/.*/, restify.serveStatic({
