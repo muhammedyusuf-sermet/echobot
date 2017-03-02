@@ -44,9 +44,9 @@ var connectorCall = new calling.CallConnector({
     callbackUrl: 'https://floodai.azurewebsites.net/api/calls',
     appId: process.env.BOTFRAMEWORK_APPID,
     appPassword: process.env.BOTFRAMEWORK_APPSECRET
-});
+});/*
 var botCall = new calling.UniversalCallBot(connectorCall);
-server.post('/api/calls', connectorCall.listen());
+server.post('/api/calls', connectorCall.listen());*/
 
 
 bot.dialog('/', function (session) {
