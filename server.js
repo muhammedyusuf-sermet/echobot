@@ -79,6 +79,26 @@ bot.dialog('/', function (session) {
 });
 
 
+/*
+botCall.dialog('/', [
+    function (session) {
+        // Send a greeting and start the menu.
+        if (!session.userData.welcomed) {
+            session.userData.welcomed = true;
+            session.send(prompts.welcome);
+            session.beginDialog('/demoMenu', { full: true });
+        } else {
+            session.send(prompts.welcomeBack);
+            session.beginDialog('/demoMenu', { full: false });
+        }
+    },
+    function (session, results) {
+        // Always say goodbye
+        session.send(prompts.goodbye);
+    }
+]);*/
+
+
 botCall.dialog('/', [
     function (session, args) {
         // Build up a stack of prompts to play
@@ -96,7 +116,7 @@ botCall.dialog('/', [
         if (results.response) {
             switch (results.response.entity) {
                 case 'help':
-                    session.replaceDialog('/', { full: false });
+                    //session.replaceDialog('/', { full: false });
                     //session.replaceDialog('/help', { full: true });
                     break;
                 case 'quit':
