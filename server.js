@@ -104,7 +104,8 @@ botCall.dialog('/', [
                     break;
                 default:
                     // Start demo
-                    session.beginDialog('/' + results.response.entity);
+                    //session.beginDialog('/' + results.response.entity);
+                    session.send("Flood condition is normal for Iowa City");
                     break;
             }
         } else {
