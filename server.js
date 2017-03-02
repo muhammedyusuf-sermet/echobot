@@ -1,7 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var calling = require('botbuilder-calling');
-var prompts = require('./prompts');
 
 var request = require('request');
 
@@ -81,7 +80,7 @@ bot.dialog('/', function (session) {
 
 // Calling bot Root
 botCall.dialog('/', function (session) {
-    calling.Prompt.text(session,'Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+    builder.Prompt.text(session,'Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
 });
 
 // Setup Restify Server
