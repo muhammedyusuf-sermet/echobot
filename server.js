@@ -143,7 +143,7 @@ botCall.dialog('/', [
     }
 ]);
 
-bot.dialog('/record', [
+botCall.dialog('/record', [
     function (session) {
         //session.send("Please ask a question");
         calling.Prompts.record(session, "Please ask a question after the beep", { playBeep: true });
