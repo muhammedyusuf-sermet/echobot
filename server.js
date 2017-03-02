@@ -47,6 +47,8 @@ bot.dialog('/', function (session) {
     {
         //session.send(`[Flood AI Alpha] \n HELP \n You can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does catchment area mean?\n - How many stream sensors are there in Iowa City watershed?`, true);
         builder.Prompts.choice(session, "[Flood AI Alpha] \n You can ask me anything about flooding like", ["What is the weather forecast for Iowa City?", "Show me stage data for nearest sensor?", "What is the meaning of hydrograph?", " How many stream sensors are there in Iowa City watershed?", "What is the flood condition for my community?"]);
+        builder.Prompts.choice(session, "Choose an option:", 'Flip A Coin|Roll Dice|Magic 8-Ball|Quit');
+        
     }
     else{
         options['form']['searchValue'] = session.message.text;
