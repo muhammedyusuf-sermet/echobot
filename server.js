@@ -102,6 +102,9 @@ botCall.dialog('/', [
                 case 'quit':
                     session.endDialog("Thank you for calling Flood AI");
                     break;
+                case 'record':
+                    session.replaceDialog('/record', { full: false });
+                    break;
                 default:
                     // Start demo
                     session.beginDialog('/' + results.response.entity);
