@@ -100,12 +100,12 @@ botCall.dialog('/', [
                     //session.replaceDialog('/help', { full: true });
                     break;
                 case 'quit':
-                    session.endDialog();
+                    session.endDialog("Thank you for calling Flood AI");
                     break;
                 default:
                     // Start demo
-                    //session.beginDialog('/' + results.response.entity);
-                    session.send("Flood condition is normal for Iowa City");
+                    session.beginDialog('/' + results.response.entity);
+                    //session.send("Flood condition is normal for Iowa City");
                     break;
             }
         } else {
@@ -118,6 +118,22 @@ botCall.dialog('/', [
         session.replaceDialog('/', { full: false });
     }
 ]);
+
+bot.dialog('/record', [
+    function (session) {
+        //session.send("Please ask a question");
+        calling.Prompts.record(session, "Please ask a question after the beep", { playBeep: true });
+    },
+    function (session, results) {
+        if (results.response) {
+            //session.endDialog(prompts.record.result, results.response.lengthOfRecordingInSecs);
+            session.send("%s", results.response.textContent);
+        } else {
+            session.endDialog("You canceled");
+        }
+    }
+]);
+
 
 // Calling bot Root
 /*
