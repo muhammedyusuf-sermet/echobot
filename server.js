@@ -79,6 +79,11 @@ bot.dialog('/', function (session) {
    // request.post({url:'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php', form: {'searchValue': 'definition', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}}, function(err,httpResponse,body){ session.send(err); session.send(body); });
 });
 
+// Calling bot Root
+botCall.dialog('/', function (session) {
+    session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+});
+
 // Setup Restify Server
 var server = restify.createServer();
 
