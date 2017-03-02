@@ -104,7 +104,7 @@ botCall.dialog('/', [
                     break;
                 case 'record':
                 case 'ask':
-                    session.replaceDialog('/record', { full: false });
+                    session.beginDialog('/record', { full: false });
                     break;
                 default:
                     // Start demo
