@@ -79,7 +79,7 @@ bot.dialog('/', function (session) {
 });
 
 
-bot.dialog('/', [
+botCall.dialog('/', [
     function (session, args) {
         // Build up a stack of prompts to play
         var list = [];
