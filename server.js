@@ -102,10 +102,10 @@ botCall.dialog('/', [
                 case 'quit':
                     session.endDialog("Thank you for calling Flood AI");
                     break;
-                case 'record':
+                /*case 'record':
                 case 'ask':
                     session.beginDialog('/record', { full: false });
-                    break;
+                    break;*/
                 default:
                     // Start demo
                     session.beginDialog('/' + results.response.entity);
@@ -119,7 +119,7 @@ botCall.dialog('/', [
     },
     function (session, results) {
         // The menu runs a loop until the user chooses to (quit).
-        session.replaceDialog('/', { full: false });
+        //session.replaceDialog('/', { full: false });
     }
 ]);
 
