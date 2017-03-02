@@ -78,16 +78,91 @@ bot.dialog('/', function (session) {
    // request.post({url:'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php', form: {'searchValue': 'definition', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}}, function(err,httpResponse,body){ session.send(err); session.send(body); });
 });
 
+
+bot.dialog('/', [
+    function (session, args) {
+        // Build up a stack of prompts to play
+        var list = [];
+        list.push(calling.Prompt.text(session, 'Welcome to Iowa Flood Information System'));
+        //session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+        calling.Prompts.choice(session, new calling.PlayPromptAction(session).prompts(list), [
+                { name: 'record', speechVariation: ['record', 'recordings'] },
+                { name: 'help', speechVariation: ['help', 'repeat'] },
+                { name: 'quit', speechVariation: ['quit', 'end call', 'hangup', 'goodbye'] }
+            ]);
+        
+    },
+    function (session, results) {
+        if (results.response) {
+            switch (results.response.entity) {
+                case 'help':
+                    session.replaceDialog('/help', { full: true });
+                    break;
+                case 'quit':
+                    session.endDialog();
+                    break;
+                default:
+                    // Start demo
+                    session.beginDialog('/' + results.response.entity);
+                    break;
+            }
+        } else {
+            // Exit the menu
+            session.endDialog("Thank you for calling Flood AI");
+        }
+    },
+    function (session, results) {
+        // The menu runs a loop until the user chooses to (quit).
+        session.replaceDialog('/', { full: false });
+    }
+]);
+
 // Calling bot Root
+/*
 botCall.dialog('/', function (session) {
-    session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
-    
+    var list = [];
+    list.push(calling.Prompt.text(session, 'Welcome to Iowa Flood Information System'));
+    //session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+    calling.Prompts.choice(session, new calling.PlayPromptAction(session).prompts(list), [
+            { name: 'record', speechVariation: ['record', 'recordings'] },
+            { name: 'help', speechVariation: ['help', 'repeat'] },
+            { name: 'quit', speechVariation: ['quit', 'end call', 'hangup', 'goodbye'] }
+        ]);
+        
+},
+    function (session, results) {
+        if (results.response) {
+            switch (results.response.entity) {
+                case 'choices':
+                    session.send(prompts.demoMenu.choices);
+                    session.replaceDialog('/demoMenu', { full: false });
+                    break;
+                case 'help':
+                    session.replaceDialog('/demoMenu', { full: true });
+                    break;
+                case 'quit':
+                    session.endDialog();
+                    break;
+                default:
+                    // Start demo
+                    session.beginDialog('/' + results.response.entity);
+                    break;
+            }
+        } else {
+            // Exit the menu
+            session.endDialog(prompts.canceled);
+        }
+    },
+    function (session, results) {
+        // The menu runs a loop until the user chooses to (quit).
+        session.replaceDialog('/demoMenu', { full: false });
+    }
    /* var list = [];
     list.push(calling.Prompt.text(session,'Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.'));
 
     calling.PlayPromptAction(session).prompts(list);*/
     
-});
+/*});*/
 
 // Setup Restify Server
 var server = restify.createServer();
