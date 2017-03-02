@@ -81,7 +81,7 @@ bot.dialog('/', function (session) {
 
 // Calling bot Root
 botCall.dialog('/', function (session) {
-    session.send('Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
+    calling.Prompt.text(session,'Welcome to Iowa Flood Information System. You can ask any flood-related questions or say "help" to see examples.');
 });
 
 // Setup Restify Server
