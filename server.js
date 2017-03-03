@@ -15,7 +15,7 @@ var options = {
     url: 'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php',
     method: 'POST',
     headers: headers,
-    form: {'searchValue': 'definition of hydrograph', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}
+    form: {'searchValue': 'definition of hydrograph', 'platform': 'Skype Chat Bot', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}
 }
 
 // Get secrets from server environment
