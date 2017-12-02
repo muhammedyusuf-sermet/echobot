@@ -1,6 +1,7 @@
 var restify = require('restify');
 var builder = require('botbuilder');
 var calling = require('botbuilder-calling');
+var prompts = require('./prompts');
 
 var request = require('request');
 
