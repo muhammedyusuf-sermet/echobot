@@ -119,6 +119,7 @@ botCall.dialog('/', [
                 case 'help':
                     //session.replaceDialog('/', { full: false });
                     //session.replaceDialog('/help', { full: true });
+                    session.send("You said help");
                     break;
                 case 'quit':
                     session.endDialog("Thank you for calling Flood AI");
