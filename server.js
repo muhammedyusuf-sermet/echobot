@@ -140,7 +140,7 @@ botCall.dialog('/', [
     },
     function (session, results) {
         // The menu runs a loop until the user chooses to (quit).
-        //session.replaceDialog('/', { full: false });
+        session.replaceDialog('/', { full: false });
     }
 ]);
 
