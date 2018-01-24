@@ -5,6 +5,12 @@ var prompts = require('./prompts');
 
 var request = require('request');
 
+/* Set the targeted platform below!!! */
+
+//var deployTarget = 0; // Heroku
+var deployTarget = 1; // Azure
+
+
 // Set the headers
 var headers = {
     'User-Agent':       'Super Agent/0.0.1',
@@ -339,6 +345,15 @@ server.get(/.*/, restify.serveStatic({
 	'default': 'index.html'
 }));
 
-server.listen(process.env.PORT || 3000, function () { //3978
-    console.log('%s listening to %s', server.name, server.url); 
-});
+
+if(deployTarget==0){
+    server.listen(process.env.PORT || 3000, function () {
+        console.log('%s listening to %s', server.name, server.url); 
+    });
+}
+else{
+    server.listen(process.env.PORT || 3978, function () {
+        console.log('%s listening to %s', server.name, server.url); 
+    });
+}
+
