@@ -338,7 +338,7 @@ var server = restify.createServer();
 // Handle Bot Framework messages
 server.post('/api/messages', connector.listen());
 server.post('/api/calls', connectorCall.listen());
-
+;
 // Serve a static web page
 server.get(/.*/, restify.serveStatic({
 	'directory': '.',
@@ -346,7 +346,7 @@ server.get(/.*/, restify.serveStatic({
 }));
 
 
-/*if(deployTarget==0){
+if(deployTarget==0){
     server.listen(process.env.PORT || 3000, function () {
         console.log('%s listening to %s', server.name, server.url); 
     });
@@ -355,9 +355,6 @@ else{
     server.listen(process.env.PORT || 3978, function () {
         console.log('%s listening to %s', server.name, server.url); 
     });
-}*/
+}
 
-server.listen(process.env.PORT || 3978, function () {
-    console.log('%s listening to %s', server.name, server.url); 
-});
 
