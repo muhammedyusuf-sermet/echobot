@@ -346,7 +346,7 @@ server.get(/.*/, restify.serveStatic({
 }));
 
 
-if(deployTarget==0){
+/*if(deployTarget==0){
     server.listen(process.env.PORT || 3000, function () {
         console.log('%s listening to %s', server.name, server.url); 
     });
@@ -355,5 +355,9 @@ else{
     server.listen(process.env.PORT || 3978, function () {
         console.log('%s listening to %s', server.name, server.url); 
     });
-}
+}*/
+
+server.listen(process.env.PORT || 3978, function () {
+    console.log('%s listening to %s', server.name, server.url); 
+});
 
