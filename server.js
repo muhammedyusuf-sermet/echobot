@@ -64,14 +64,14 @@ bot.dialog('/', function (session) {
     //session.send("I know you said; " + session.message.text);
     
     
-    if(session.message.text.toUpperCase() == 'help'.toUpperCase())
+    /*if(session.message.text.toUpperCase() == 'help'.toUpperCase())
     {
         session.send(`[Flood AI Alpha] \n HELP \n You can ask me anything about flooding like \n - What is the weather forecast for Iowa City?\n - Show me stage data for nearest sensor?\n - What does watershed mean?\n - How many stream sensors are there in Iowa City watershed?`, true);
         //builder.Prompts.choice(session, "[Flood AI Alpha] \n You can ask me anything about flooding like", ["What is the weather forecast for Iowa City?", "Show me stage data for nearest sensor?", "What is the meaning of hydrograph?", " How many stream sensors are there in Iowa City watershed?", "What is the flood condition for my community?"],{listStyle: builder.ListStyle["list"]});
         //builder.Prompts.choice(session, "Choose an option:", 'Flip A Coin|Roll Dice|Magic 8-Ball|Quit',{listStyle: builder.ListStyle["list"]});
         //builder.Prompts.choice(session, "Which color?", "red|green|blue");
     }
-    else{
+    else{*/
         options['form']['searchValue'] = session.message.text;
         
         request(options, function (error, response, body) {
@@ -83,7 +83,7 @@ bot.dialog('/', function (session) {
                 //session.send();
             }
         });
-    }
+    //}
     
    // request.post({url:'http://s-iihr50.iihr.uiowa.edu/demir/knowledge/voice/KnowledgeEngine.php', form: {'searchValue': 'definition', 'communityID': -1 , 'communityName': 'Iowa City (Iowa River)', 'communityLat': '41.646144', 'communityLng': '-91.535903'}}, function(err,httpResponse,body){ session.send(err); session.send(body); });
 });
